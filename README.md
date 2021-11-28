@@ -1,4 +1,4 @@
-# Hello, wellcome to bus-dynamics project
+## Hello, wellcome to bus-dynamics project
 
 # Getting Started
 
@@ -13,8 +13,12 @@ http://localhost:3000 with your browser to see the result.
 
 # tech
 
-## framework: react / next.js
-## language: typescript
+## framework 
+react / next.js
+
+## language
+typescript
+
 ## main package
 UI library: ant design  
 map: leaflet / react-leaflet  
