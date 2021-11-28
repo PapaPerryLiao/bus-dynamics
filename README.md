@@ -17,9 +17,9 @@ http://localhost:3000 with your browser to see the result.
 # framework: react / next.js
 # language: typescript
 # main package
-UI library: ant design
-map: leaflet / react-leaflet
-state management: react-query
+UI library: ant design  
+map: leaflet / react-leaflet  
+state management: react-query  
 
 
 ## api
