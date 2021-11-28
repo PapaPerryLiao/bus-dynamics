@@ -1,26 +1,24 @@
-Hello, wellcome to bus-dynamics project
+# Hello, wellcome to bus-dynamics project
 
-## Getting Started
+# Getting Started
 
-# install package
+## install package
 yarn install
 
-# dev
+## dev
 yarn dev
 
-# Open 
+## open 
 http://localhost:3000 with your browser to see the result.
 
+# tech
 
-## tech
-
-# framework: react / next.js
-# language: typescript
-# main package
+## framework: react / next.js
+## language: typescript
+## main package
 UI library: ant design  
 map: leaflet / react-leaflet  
 state management: react-query  
-
 
 ## api
 https://ptx.transportdata.tw/
