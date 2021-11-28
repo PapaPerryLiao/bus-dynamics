@@ -31,7 +31,7 @@ const BusOrderIcon: FC<Props> = ({ children }) => {
           />
         </g>
         <g>
-          <text textAnchor="middle" x="256" y="280" font-family="Verdana" font-size="200" fill="grey">
+          <text textAnchor="middle" x="256" y="280" fontFamily="Verdana" fontSize="200" fill="grey">
             {children}
           </text>
         </g>

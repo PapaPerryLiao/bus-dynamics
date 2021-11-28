@@ -3,11 +3,10 @@ const MeIcon = () => {
     <div className="container">
       <svg
         version="1.0"
-        xmlns="http://www.w3.org/2000/svg"
+        // xmlns="http://www.w3.org/2000/svg"
         width="30px"
         height="30px"
-        viewBox="0 0 512.000000 512.000000"
-        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 512 512"
       >
         <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
           <path
