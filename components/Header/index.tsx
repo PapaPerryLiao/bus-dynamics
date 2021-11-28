@@ -13,7 +13,7 @@ const Header: FC<Props> = ({ children }) => {
           <img src="img/bus-stop.png" alt="bus title" width="100%" height="100%" />
         </span>
         <span>你要去哪裡？</span>
-        <span>Where's next?</span>
+        <span>Where&apos;s next?</span>
       </div>
       <div className="search">{children}</div>
       <div className="link">
