@@ -70,6 +70,7 @@ const Header: FC<Props> = ({ children }) => {
           top: 50%;
           transform: translateY(-50%);
           font-size: 28px;
+          z-index: 1;
         }
         .title > * + * {
           margin-left: 15px;
@@ -85,7 +86,7 @@ const Header: FC<Props> = ({ children }) => {
           width: 60px;
           cursor: pointer;
         }
-        .switch {
+        .search > * + * {
           margin-left: 10px;
         }
         .link {
@@ -110,16 +111,21 @@ const Header: FC<Props> = ({ children }) => {
         .link > * + * {
           margin-left: 15px;
         }
-        @media (max-width: 992px) {
+        @media (max-width: 1200px) {
           .title > span:nth-child(3) {
+            display: none;
+          }
+        }
+        @media (max-width: 834px) {
+          .container {
+            justify-content: flex-end;
+          }
+          .link {
             display: none;
           }
         }
         @media (max-width: 576px) {
           .title > span:nth-child(2) {
-            display: none;
-          }
-          .link {
             display: none;
           }
         }
