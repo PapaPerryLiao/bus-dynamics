@@ -6,6 +6,8 @@ interface ContextInterface {
   setPoint: Dispatch<Point>;
   radius: number;
   setRadius: Dispatch<number>;
+  isGeoLoading: boolean;
+  setIsGeoLoading: Dispatch<boolean>;
 }
 
 const SearchContext = createContext<ContextInterface>({} as ContextInterface);
