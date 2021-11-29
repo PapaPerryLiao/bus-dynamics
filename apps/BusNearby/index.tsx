@@ -21,7 +21,7 @@ const MultiMarker = dynamic(() => import("@components/Map/MultiMarker"), {
 
 const BusNearBy = () => {
   const [point, setPoint] = useState<Point>({ x: NaN, y: NaN });
-  const [radius, setRadius] = useState(100);
+  const [radius, setRadius] = useState(500);
   const [isGeoLoading, setIsGeoLoading] = useState(true);
 
   const { Content, Footer, Sider } = Layout;
