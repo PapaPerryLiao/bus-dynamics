@@ -58,7 +58,7 @@ const BusNearBy = () => {
             collapsible
             collapsedWidth="80"
             theme="light"
-            width="400"
+            width="375"
             breakpoint="xl"
             style={{
               overflow: "auto",
