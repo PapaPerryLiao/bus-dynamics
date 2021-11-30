@@ -1,7 +1,6 @@
 import BusIcon from "@components/Icon/BusIcon";
 import MeIcon from "@components/Icon/MeIcon";
 import Context from "@context/BusNearby/context";
-import Point from "@customTypes/Point";
 import useStationNearBy from "@services/hooks/useStationNearBy";
 import useDebounce from "@utils/hooks/useDebounce";
 import useGeoLocation from "@utils/hooks/useGeoLocation";
@@ -20,32 +19,42 @@ const MultiMarker = dynamic(() => import("@components/Map/MultiMarker"), {
 });
 
 const BusNearBy = () => {
-  const [point, setPoint] = useState<Point>({ x: NaN, y: NaN });
+  const [longitude, setLongitude] = useState("");
+  const [latitude, setLatitude] = useState("");
   const [radius, setRadius] = useState(500);
   const [isGeoLoading, setIsGeoLoading] = useState(true);
 
   const { Content, Footer, Sider } = Layout;
 
-  const { value: debouncePoint } = useDebounce(point, 2000);
+  const { value: x } = useDebounce(longitude, 800);
+
+  const { value: y } = useDebounce(latitude, 800);
 
   const { value: debounceRadius } = useDebounce(radius, 800);
 
   //FIXME userLocation type
   const { data: userLocation }: any = useGeoLocation({
-    onSuccess: (userLocation: any) => {
-      setPoint(userLocation);
+    onSuccess: ({ x, y }: any) => {
+      setLongitude(x.toString());
+      setLatitude(y.toString());
       setIsGeoLoading(false);
     },
   });
 
-  const { data: StationData, isLoading } = useStationNearBy({ position: debouncePoint, radius: debounceRadius });
+  const { data: StationData, isLoading } = useStationNearBy({
+    position: {
+      x, y
+    }, radius: debounceRadius
+  });
 
   return (
     <Layout>
       <Context.Provider
         value={{
-          point,
-          setPoint,
+          longitude,
+          setLongitude,
+          latitude,
+          setLatitude,
           radius,
           setRadius,
           isGeoLoading,
@@ -70,9 +79,9 @@ const BusNearBy = () => {
             <Menu theme="light" defaultSelectedKeys={["4"]} mode="inline">
               {StationData?.map((item: any, index: number) => (
                 <Menu.SubMenu key={index} title={`${item.StationName.Zh_tw}`}>
-                  {item?.Stops?.map(({ RouteName, RouteID }: any, idx: number) => {
+                  {item?.Stops?.map(({ RouteName, RouteID }: any) => {
                     return (
-                      <Menu.Item key={idx} title={`${RouteName.Zh_tw}`}>
+                      <Menu.Item key={`${item.StationID}_${RouteID}`} title={`${RouteName.Zh_tw}`}>
                         {`${RouteName.Zh_tw}`}
                       </Menu.Item>
                     );
@@ -93,8 +102,8 @@ const BusNearBy = () => {
                   IconComponent={<BusIcon />}
                 />
               )}
-              {point.x && point.y && <Marker position={point} IconComponent={<MeIcon />} />}
-              {point.x && point.y && radius && <Circle position={point} radius={radius} />}
+              {longitude && latitude && <Marker position={{ x: Number(longitude), y: Number(latitude) }} IconComponent={<MeIcon />} />}
+              {longitude && latitude && radius && <Circle position={{ x: Number(longitude), y: Number(latitude) }} radius={radius} />}
             </Map>
           </Content>
         </Layout>

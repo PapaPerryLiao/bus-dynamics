@@ -2,8 +2,10 @@ import Point from "@customTypes/Point";
 import { createContext, Dispatch } from "react";
 
 interface ContextInterface {
-  point: Point;
-  setPoint: Dispatch<Point>;
+  longitude: string,
+  setLongitude: Dispatch<string>,
+  latitude: string,
+  setLatitude: Dispatch<string>,
   radius: number;
   setRadius: Dispatch<number>;
   isGeoLoading: boolean;
