@@ -16,7 +16,7 @@ const Header = () => {
     <DefaultHeader>
       <Select
         showSearch
-        style={{ maxWidth: 125, width: "auto" }}
+        style={{ width: 125 }}
         placeholder="Search to Select"
         optionFilterProp="children"
         filterOption={(input, option) => option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
@@ -31,7 +31,7 @@ const Header = () => {
         ))}
       </Select>
       <AutoComplete
-        style={{ maxWidth: 125, width: "auto" }}
+        style={{ width: 125 }}
         options={route?.map(({ RouteName }: any) => ({
           value: RouteName.Zh_tw,
         }))}
