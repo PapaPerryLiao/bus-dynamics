@@ -111,13 +111,12 @@ const BusRoute = () => {
                 <Menu.Item
                   key={item.StopID}
                   icon={<div>{index + 1}</div>}
-                  title={`${item.StopName.Zh_tw} ${
-                    item.EstimateTime === 0 ? "即將進站" : item.EstimateTime ? Math.round(item.EstimateTime / 60) + "分" : "未發車"
-                  }`}
+                  title={`${item.StopName.Zh_tw} ${item.EstimateTime < 90 ? "即將進站" : item.EstimateTime ? Math.round(item.EstimateTime / 60) + "分" : "未發車"
+                    }`}
                 >
                   {`${item.StopName.Zh_tw}`}
                   <span style={{ position: "absolute", right: "30px" }}>
-                    {item.EstimateTime === 0 ? "即將進站" : item.EstimateTime ? Math.round(item.EstimateTime / 60) + "分" : "未發車"}
+                    {item.EstimateTime < 90 ? "即將進站" : item.EstimateTime ? Math.round(item.EstimateTime / 60) + "分" : "未發車"}
                   </span>
                 </Menu.Item>
               ))}
@@ -130,7 +129,7 @@ const BusRoute = () => {
                   dataList={stopDataList?.map(({ StopPosition, StopName, EstimateTime }: any, index: number) => ({
                     x: StopPosition.PositionLon,
                     y: StopPosition.PositionLat,
-                    content: `${StopName.Zh_tw} ${StopName.En} ${EstimateTime ? EstimateTime + "秒後到站" : "未發車"}`,
+                    content: `${StopName.Zh_tw} ${StopName.En} ${EstimateTime < 90 ? "即將進站" : EstimateTime ? Math.round(EstimateTime / 60) + "分" : "未發車"}`,
                     IconComponent: <BusOrderIcon children={(index + 1).toString()} />,
                   }))}
                   IconComponent={<BusIcon />}
