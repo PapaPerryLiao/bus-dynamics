@@ -25,7 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       url: tdx_url + "/" + (slug as string[])?.join("/") + queryString,
       data: req.body,
       headers: {
-        cookie: req.headers.cookie,
+        cookie: req?.headers?.cookie || "",
         ...(await getAuthorizationHeader()),
       },
     });
